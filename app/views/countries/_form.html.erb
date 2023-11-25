@@ -1,0 +1,33 @@
+<%= form_with(model: country) do |f| %>
+  <h1><%= yield(:title) %></h1>
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name, class: 'form-control' %>
+
+  <%= f.label :full_name %>
+  <%= f.text_field :full_name, class: 'form-control' %>
+
+  <div class="btn-group btn-group-justified" role="group" aria-label="...">
+    <div class="btn-group" role="group">
+      <%= link_to "back", countries_url, class: "btn btn-primary" %>
+    </div>
+
+    <% if current_user.admin? %>
+      <% button_text = yield(:button_text) %>
+      <% if (button_text.empty?) %>
+        <div class="btn-group" role="group">
+          <%= link_to "edit", edit_country_path(country), class: "btn btn-primary" %>
+        </div>
+        <div class="btn-group" role="group">
+          <%= link_to "delete", country, class: "btn btn-primary", data: { "turbo-method": :delete,
+          turbo_confirm: "You sure?" } %>
+        </div>
+      <% else %>
+        <div class="btn-group" role="group">
+          <%= f.submit button_text, class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>

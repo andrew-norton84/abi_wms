@@ -1,0 +1,14 @@
+<% provide(:title, 'All Countries') %>
+<h1>All Countries</h1>
+
+<%= will_paginate %>
+
+<ul class="countries">
+    <%= render @countries %>
+</ul>
+
+<%= will_paginate %>
+
+<% if current_user.admin? %>
+    <%= link_to "New", new_country_path, class: "btn btn-primary" %>
+<% end %>

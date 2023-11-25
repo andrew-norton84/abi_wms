@@ -34,3 +34,9 @@ following = users[2..50]
 followers = users[3..40]
 following.each { |followed| user.follow(followed) }
 followers.each { |follower| follower.follow(user) }
+
+# Create countries
+Country.create!(name: "UK",
+                full_name: "Unitied Kindom")
+Country.create!(name: "FR",
+                full_name: "France")

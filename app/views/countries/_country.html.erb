@@ -1,0 +1,9 @@
+<li>
+  <%= link_to country.name, country %>
+  <%= link_to country.full_name, country %>
+  <% if current_user.admin? %>
+    | <%= link_to "edit", edit_country_path(country) %>
+    | <%= link_to "delete", country, data: { "turbo-method": :delete,
+                                          turbo_confirm: "You sure?" } %>
+  <% end %>
+</li>

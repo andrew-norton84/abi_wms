@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: UK
+  full_name: United Kingdom
+
+two:
+  name: FR
+  full_name: France
