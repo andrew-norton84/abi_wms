@@ -1,4 +1,5 @@
 class Country < ApplicationRecord
+  has_many :warehouse_divisions, dependent: :destroy
   before_save   :uppercase_name
   validates :name,  presence: true, length: { maximum: 4 },
       uniqueness: { case_sensitive: false }

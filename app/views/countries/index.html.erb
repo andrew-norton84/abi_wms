@@ -1,14 +1,11 @@
-<% provide(:title, 'All Countries') %>
+<% provide(:title, 'Countries') %>
+
 <h1>All Countries</h1>
 
-<%= will_paginate %>
+<%= render 'shared/page', new_path: new_country_path %>
 
 <ul class="countries">
     <%= render @countries %>
 </ul>
 
-<%= will_paginate %>
-
-<% if current_user.admin? %>
-    <%= link_to "New", new_country_path, class: "btn btn-primary" %>
-<% end %>
+<%= render '/shared/page', new_path: new_country_path %>

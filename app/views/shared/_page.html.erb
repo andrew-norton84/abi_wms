@@ -1,0 +1,10 @@
+<div class="btn-group btn-group-justified" role="group" aria-label="...">
+    <div class="btn-group" role="group">
+        <%= will_paginate %>
+    </div>
+    <% if current_user.admin? %>
+        <div class="btn-group" role="group">
+            <%= link_to "New", new_path, class: "btn btn-primary" %>
+        </div>
+    <% end %>
+</div>

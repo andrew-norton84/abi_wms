@@ -1,0 +1,16 @@
+<%= form_with(model: warehouse_division) do |f| %>
+  <h1><%= yield(:title) %></h1>
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <%= f.label :division %>
+  <%= f.text_field :division, class: 'form-control' %>
+
+  <%= f.label :description %>
+  <%= f.text_field :description, class: 'form-control' %>
+
+  <%= f.label :country %>
+  <%= f.collection_select :country_id, Country.all, :id, :name, prompt: true, class: 'form-control' %>
+
+  <% yield(:button_text).empty? ? ep = edit_warehouse_division_path(warehouse_division) : ep = "" %>
+  <%= render 'shared/buttons', f: f, url: warehouse_divisions_url, model: warehouse_division, edit_path: ep %>
+<% end %>

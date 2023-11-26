@@ -1,0 +1,10 @@
+<li>
+  <%= link_to warehouse_division.division, warehouse_division %>
+  - 
+  <%= warehouse_division.description %>
+  <% if current_user.admin? %>
+    | <%= link_to "edit", edit_warehouse_division_path(warehouse_division) %>
+    | <%= link_to "delete", warehouse_division, data: { "turbo-method": :delete,
+                                          turbo_confirm: "You sure?" } %>
+  <% end %>
+</li>

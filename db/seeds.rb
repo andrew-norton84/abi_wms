@@ -7,6 +7,15 @@ User.create!(name:  "Example User",
              activated: true,
              activated_at: Time.zone.now)
 
+# Create a real user.
+User.create!(name:  "Andrew Norton",
+email: "andrew.norton84@hotmail.com",
+password:              "xxx123",
+password_confirmation: "xxx123",
+admin:     true,
+activated: true,
+activated_at: Time.zone.now)
+
 # Generate a bunch of additional users.
 99.times do |n|
   name  = Faker::Name.name
@@ -36,7 +45,29 @@ following.each { |followed| user.follow(followed) }
 followers.each { |follower| follower.follow(user) }
 
 # Create countries
-Country.create!(name: "UK",
+@c = Country.create!(name: "UK",
                 full_name: "Unitied Kindom")
 Country.create!(name: "FR",
                 full_name: "France")
+
+99.times do |n|
+  name  = "C#{n}"
+  full_name = Faker::Address.country.truncate(40)
+  Country.create!(name: name,
+                full_name: full_name)
+end
+
+# Create divisions
+WarehouseDivision.create!(division: "305M",
+                          description: "Warrington",
+                          country: @c)
+WarehouseDivision.create!(division: "406P",
+                          description: "Nexus Point",
+                          country: @c)
+99.times do |n|
+  division  = "D#{n}"
+  description = Faker::Address.city.truncate(40)
+  WarehouseDivision.create!(division: division,
+  description: description, 
+  country: @c)
+end

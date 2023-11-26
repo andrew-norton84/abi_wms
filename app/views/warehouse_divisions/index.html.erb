@@ -1,0 +1,10 @@
+<% provide(:title, 'All Warehouse Divisions') %>
+<h1>Warehouse Divisions</h1>
+
+<%= render '/shared/page', new_path: new_warehouse_division_path %>
+
+<ul class="warehouse_divisions">
+    <%= render @warehouse_divisions %>
+</ul>
+
+<%= render '/shared/page', new_path: new_warehouse_division_path %>

@@ -1,7 +1,10 @@
 require "test_helper"
 
 class CountriesControllerTest < ActionDispatch::IntegrationTest
-  # test "the truth" do
-  #   assert true
-  # end
+
+  def setup
+    @country = countries(:UK)
+    @other_country = users(:FR)
+  end
+
 end
