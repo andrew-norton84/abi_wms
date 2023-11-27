@@ -1,0 +1,17 @@
+<%= form_with(model: storage_location) do |f| %>
+  <h1><%= yield(:title) %></h1>
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <%= f.label :storage_location %>
+  <%= f.number_field :storage_location, class: 'form-control' %>
+
+  <%= f.label :short_desc %>
+  <%= f.text_field :short_desc, class: 'form-control' %>
+
+  <%= f.label :description%>
+  <%= f.text_field :description, class: 'form-control' %>
+
+  <% yield(:button_text).empty? ? ep = edit_storage_location_path(storage_location) : ep = "" %>
+  <%= render 'shared/buttons', f: f, url: storage_locations_url, model: storage_location, edit_path: ep %>
+
+<% end %>

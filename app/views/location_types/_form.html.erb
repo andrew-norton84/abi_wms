@@ -1,0 +1,17 @@
+<%= form_with(model: location_type) do |f| %>
+  <h1><%= yield(:title) %></h1>
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <%= f.label :location_type %>
+  <%= f.text_field:location_type, class: 'form-control' %>
+
+  <%= f.label :short_desc %>
+  <%= f.text_field :short_desc, class: 'form-control' %>
+
+  <%= f.label :description%>
+  <%= f.text_field :description, class: 'form-control' %>
+
+  <% yield(:button_text).empty? ? ep = edit_location_type_path(location_type) : ep = "" %>
+  <%= render 'shared/buttons', f: f, url: location_types_url, model: location_type, edit_path: ep %>
+
+<% end %>

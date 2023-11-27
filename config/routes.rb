@@ -21,5 +21,12 @@ Rails.application.routes.draw do
   resources :relationships,       only: [:create, :destroy]
   resources :countries
   resources :warehouse_divisions
+  resources :storage_locations
+  resources :stock_types
+  resources :location_types
+  resources :product_types
+  resources :products
+  resources :customers
+  resources :suppliers
   get '/microposts', to: 'static_pages#home'
 end

@@ -1,0 +1,10 @@
+<% provide(:title, 'All Supplier') %>
+<h1>Suppliers</h1>
+
+<%= render '/shared/page', new_path: new_supplier_path %>
+
+<ul class="suppliers">
+    <%= render @suppliers %>
+</ul>
+
+<%= render '/shared/page', new_path: new_supplier_path %>

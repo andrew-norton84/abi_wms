@@ -1,0 +1,10 @@
+<% provide(:title, 'All Customer') %>
+<h1>Customers</h1>
+
+<%= render '/shared/page', new_path: new_customer_path %>
+
+<ul class="customers">
+    <%= render @customers %>
+</ul>
+
+<%= render '/shared/page', new_path: new_customer_path %>

@@ -1,0 +1,10 @@
+<li>
+  <%= link_to product.product, product %>
+  - 
+  <%= product.description %>
+  <% if current_user.admin? %>
+    | <%= link_to "edit", edit_product_path(product) %>
+    | <%= link_to "delete", product, data: { "turbo-method": :delete,
+                                          turbo_confirm: "You sure?" } %>
+  <% end %>
+</li>

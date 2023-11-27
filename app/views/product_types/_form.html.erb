@@ -1,0 +1,17 @@
+<%= form_with(model: product_type) do |f| %>
+  <h1><%= yield(:title) %></h1>
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <%= f.label :product_type %>
+  <%= f.text_field:product_type, class: 'form-control' %>
+
+  <%= f.label :short_desc %>
+  <%= f.text_field :short_desc, class: 'form-control' %>
+
+  <%= f.label :description%>
+  <%= f.text_field :description, class: 'form-control' %>
+
+  <% yield(:button_text).empty? ? ep = edit_product_type_path(product_type) : ep = "" %>
+  <%= render 'shared/buttons', f: f, url: product_types_url, model: product_type, edit_path: ep %>
+
+<% end %>

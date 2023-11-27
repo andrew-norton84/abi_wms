@@ -1,0 +1,10 @@
+<li>
+  <%= link_to customer.customer, customer %>
+  - 
+  <%= customer.name %>
+  <% if current_user.admin? %>
+    | <%= link_to "edit", edit_customer_path(customer) %>
+    | <%= link_to "delete", customer, data: { "turbo-method": :delete,
+                                          turbo_confirm: "You sure?" } %>
+  <% end %>
+</li>

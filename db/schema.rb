@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_25_221956) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_27_201539) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -47,6 +47,25 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_25_221956) do
     t.index ["name"], name: "index_countries_on_name", unique: true
   end
 
+  create_table "customers", force: :cascade do |t|
+    t.string "customer"
+    t.integer "country_id", null: false
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["country_id"], name: "index_customers_on_country_id"
+    t.index ["customer"], name: "index_customers_on_customer", unique: true
+  end
+
+  create_table "location_types", force: :cascade do |t|
+    t.string "location_type"
+    t.string "short_desc"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["location_type"], name: "index_location_types_on_location_type", unique: true
+  end
+
   create_table "microposts", force: :cascade do |t|
     t.text "content"
     t.integer "user_id", null: false
@@ -54,6 +73,27 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_25_221956) do
     t.datetime "updated_at", null: false
     t.index ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_microposts_on_user_id"
+  end
+
+  create_table "product_types", force: :cascade do |t|
+    t.string "product_type"
+    t.string "short_desc"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_type"], name: "index_product_types_on_product_type", unique: true
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "product"
+    t.integer "country_id", null: false
+    t.integer "product_type_id", null: false
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["country_id"], name: "index_products_on_country_id"
+    t.index ["product"], name: "index_products_on_product", unique: true
+    t.index ["product_type_id"], name: "index_products_on_product_type_id"
   end
 
   create_table "relationships", force: :cascade do |t|
@@ -64,6 +104,34 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_25_221956) do
     t.index ["followed_id"], name: "index_relationships_on_followed_id"
     t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
+  end
+
+  create_table "stock_types", force: :cascade do |t|
+    t.string "stock_type"
+    t.string "short_desc"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["stock_type"], name: "index_stock_types_on_stock_type", unique: true
+  end
+
+  create_table "storage_locations", force: :cascade do |t|
+    t.integer "storage_location"
+    t.string "short_desc"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["storage_location"], name: "index_storage_locations_on_storage_location", unique: true
+  end
+
+  create_table "suppliers", force: :cascade do |t|
+    t.string "supplier"
+    t.integer "country_id", null: false
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["country_id"], name: "index_suppliers_on_country_id"
+    t.index ["supplier"], name: "index_suppliers_on_supplier", unique: true
   end
 
   create_table "users", force: :cascade do |t|
@@ -94,6 +162,10 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_25_221956) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "customers", "countries"
   add_foreign_key "microposts", "users"
+  add_foreign_key "products", "countries"
+  add_foreign_key "products", "product_types"
+  add_foreign_key "suppliers", "countries"
   add_foreign_key "warehouse_divisions", "countries"
 end

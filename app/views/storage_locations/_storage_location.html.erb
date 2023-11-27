@@ -1,0 +1,12 @@
+<li>
+  <%= link_to storage_location.storage_location, storage_location %>
+   - 
+  <%= storage_location.short_desc %>
+  - 
+  <%= storage_location.description %>
+  <% if current_user.admin? %>
+    | <%= link_to "edit", edit_storage_location_path(storage_location) %>
+    | <%= link_to "delete", storage_location, data: { "turbo-method": :delete,
+                                          turbo_confirm: "You sure?" } %>
+  <% end %>
+</li>

@@ -1,0 +1,11 @@
+<% provide(:title, 'Stock Type') %>
+
+<h1>All Stock Types</h1>
+
+<%= render 'shared/page', new_path: new_stock_type_path %>
+
+<ul class="stock_types">
+    <%= render @stock_types %>
+</ul>
+
+<%= render '/shared/page', new_path: new_stock_type_path %>

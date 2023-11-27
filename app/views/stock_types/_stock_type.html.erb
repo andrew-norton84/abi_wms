@@ -1,0 +1,12 @@
+<li>
+  <%= link_to stock_type.stock_type, stock_type %>
+   - 
+  <%= stock_type.short_desc %>
+  - 
+  <%= stock_type.description %>
+  <% if current_user.admin? %>
+    | <%= link_to "edit", edit_stock_type_path(stock_type) %>
+    | <%= link_to "delete", stock_type, data: { "turbo-method": :delete,
+                                          turbo_confirm: "You sure?" } %>
+  <% end %>
+</li>

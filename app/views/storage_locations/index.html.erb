@@ -1,0 +1,11 @@
+<% provide(:title, 'Storage Locations') %>
+
+<h1>All Storage Locations</h1>
+
+<%= render 'shared/page', new_path: new_storage_location_path %>
+
+<ul class="storage_locations">
+    <%= render @storage_locations %>
+</ul>
+
+<%= render '/shared/page', new_path: new_storage_location_path %>

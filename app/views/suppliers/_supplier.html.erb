@@ -1,0 +1,10 @@
+<li>
+  <%= link_to supplier.supplier, supplier %>
+  - 
+  <%= supplier.name %>
+  <% if current_user.admin? %>
+    | <%= link_to "edit", edit_supplier_path(supplier) %>
+    | <%= link_to "delete", supplier, data: { "turbo-method": :delete,
+                                          turbo_confirm: "You sure?" } %>
+  <% end %>
+</li>

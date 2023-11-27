@@ -58,12 +58,46 @@ Country.create!(name: "FR",
 end
 
 # Create divisions
+WarehouseDivision.create!(division: "106M",
+                          description: "Glasgow",
+                          country: @c)
+WarehouseDivision.create!(division: "201D",
+                          description: "Leeds",
+                          country: @c)
 WarehouseDivision.create!(division: "305M",
                           description: "Warrington",
+                          country: @c)
+WarehouseDivision.create!(division: "405N",
+                          description: "Belfast",
                           country: @c)
 WarehouseDivision.create!(division: "406P",
                           description: "Nexus Point",
                           country: @c)
+WarehouseDivision.create!(division: "408T",
+                          description: "Tamworth",
+                          country: @c)
+WarehouseDivision.create!(division: "501G",
+                          description: "Bristol",
+                          country: @c)
+WarehouseDivision.create!(division: "504M",
+                          description: "Swansea",
+                          country: @c)
+WarehouseDivision.create!(division: "602J",
+                          description: "Bexhill",
+                          country: @c)
+WarehouseDivision.create!(division: "606R",
+                          description: "Enterprise",
+                          country: @c)
+WarehouseDivision.create!(division: "703M",
+                          description: "Ruislip",
+                          country: @c)
+WarehouseDivision.create!(division: "706S",
+                          description: "Romford",
+                          country: @c)
+WarehouseDivision.create!(division: "908B",
+                          description: "Southampton",
+                          country: @c)
+
 99.times do |n|
   division  = "D#{n}"
   description = Faker::Address.city.truncate(40)
@@ -71,3 +105,89 @@ WarehouseDivision.create!(division: "406P",
   description: description, 
   country: @c)
 end
+
+# Create Storage Locations
+StorageLocation.create!(storage_location: 1001,
+                          short_desc: "MAIN",
+                          description: "Main Warehouse")
+StorageLocation.create!(storage_location: 1002,
+                          short_desc: "OPO",
+                          description: "OPO Location")
+StorageLocation.create!(storage_location: 1003,
+                          short_desc: "CDOC",
+                          description: "Cross Dock")
+StorageLocation.create!(storage_location: 1004,
+                          short_desc: "CONS",
+                          description: "Consignment")
+StorageLocation.create!(storage_location: 1005,
+                          short_desc: "OFFS",
+                          description: "Off-Site")
+StorageLocation.create!(storage_location: 3001,
+                          short_desc: "VRET",
+                          description: "Vendor Returns")
+StorageLocation.create!(storage_location: 3002,
+                          short_desc: "CRET",
+                          description: "Customer Returns")
+StorageLocation.create!(storage_location: 4001,
+                          short_desc: "QUAR",
+                          description: "Quarantine")
+StorageLocation.create!(storage_location: 4002,
+                          short_desc: "SCRP",
+                          description: "Scrappage")
+
+# Create Stock Types
+StockType.create!(stock_type: "U",
+                          short_desc: "URES",
+                          description: "Unrestricted")
+
+StockType.create!(stock_type: "B",
+                          short_desc: "BLCK",
+                          description: "Blocked")
+
+StockType.create!(stock_type: "Q",
+                          short_desc: "QI",
+                          description: "Quality Inspection")
+
+StockType.create!(stock_type: "T",
+                          short_desc: "TRAN",
+                          description: "In Transit")
+
+# Create Location Type
+LocationType.create!(location_type: "S",
+                          short_desc: "PICK",
+                          description: "Pick Location")
+
+LocationType.create!(location_type: "P",
+                          short_desc: "PALL",
+                          description: "Pallet Location")
+
+LocationType.create!(location_type: "L",
+                          short_desc: "LP",
+                          description: "Licence Plate")   
+
+LocationType.create!(location_type: "W",
+                          short_desc: "OWIP",
+                          description: "Order WIP") 
+
+# Create Product Type
+ProductType.create!(product_type: "C",
+                          short_desc: "CTRL",
+                          description: "Controlled")
+
+ProductType.create!(product_type: "F",
+                          short_desc: "FLAM",
+                          description: "Flammable")
+
+ProductType.create!(product_type: "M",
+                          short_desc: "CYTO",
+                          description: "Cyto-Toxic")   
+
+ProductType.create!(product_type: "N",
+                          short_desc: "CYFR",
+                          description: "Cyto-Fridge")
+
+ProductType.create!(product_type: "R",
+                          short_desc: "FRID",
+                          description: "Fridge")                        
+
+# end

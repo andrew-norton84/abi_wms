@@ -1,0 +1,12 @@
+<li>
+  <%= link_to location_type.location_type, location_type %>
+   - 
+  <%= location_type.short_desc %>
+  - 
+  <%= location_type.description %>
+  <% if current_user.admin? %>
+    | <%= link_to "edit", edit_location_type_path(location_type) %>
+    | <%= link_to "delete", location_type, data: { "turbo-method": :delete,
+                                          turbo_confirm: "You sure?" } %>
+  <% end %>
+</li>

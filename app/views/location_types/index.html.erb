@@ -1,0 +1,11 @@
+<% provide(:title, 'Location Type') %>
+
+<h1>All Location Types</h1>
+
+<%= render 'shared/page', new_path: new_location_type_path %>
+
+<ul class="location_types">
+    <%= render @location_types %>
+</ul>
+
+<%= render '/shared/page', new_path: new_location_type_path %>

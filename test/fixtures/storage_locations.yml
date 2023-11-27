@@ -1,0 +1,16 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+1001:
+  storage_location: 1001
+  short_desc: MAIN
+  description: Main Warehouse
+
+4001:
+  storage_location: 4001
+  short_desc: QUAR
+  description: Quarantine
+
+4002:
+  storage_location: 4002
+  short_desc: SCRP
+  description: Scrappage

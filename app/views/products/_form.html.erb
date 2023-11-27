@@ -1,0 +1,19 @@
+<%= form_with(model: product) do |f| %>
+  <h1><%= yield(:title) %></h1>
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <%= f.label :product %>
+  <%= f.text_field :product, class: 'form-control' %>
+
+  <%= f.label :description %>
+  <%= f.text_field :description, class: 'form-control' %>
+
+  <%= f.label :country %>
+  <%= f.collection_select :country_id, Country.all, :id, :name, prompt: true, class: 'form-control' %>
+
+  <%= f.label :product_type %>
+  <%= f.collection_select :product_type_id, ProductType.all, :id, :description, prompt: true, class: 'form-control' %>
+
+  <% yield(:button_text).empty? ? ep = edit_product_path(product) : ep = "" %>
+  <%= render 'shared/buttons', f: f, url: products_url, model: product, edit_path: ep %>
+<% end %>

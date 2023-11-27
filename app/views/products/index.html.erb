@@ -1,0 +1,10 @@
+<% provide(:title, 'All Product') %>
+<h1>Products</h1>
+
+<%= render '/shared/page', new_path: new_product_path %>
+
+<ul class="products">
+    <%= render @products %>
+</ul>
+
+<%= render '/shared/page', new_path: new_product_path %>
