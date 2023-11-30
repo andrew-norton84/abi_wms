@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_27_201539) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_28_230719) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -39,6 +39,36 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_27_201539) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "containers", force: :cascade do |t|
+    t.integer "warehouse_division_id", null: false
+    t.integer "location_type_id", null: false
+    t.integer "warehouse_location_id", null: false
+    t.integer "storage_location_id", null: false
+    t.integer "stock_type_id", null: false
+    t.integer "product_id", null: false
+    t.integer "quantity"
+    t.date "expiry_date"
+    t.date "manufact_date"
+    t.string "batch_number"
+    t.string "reference"
+    t.string "notes"
+    t.string "special_stock_type"
+    t.string "special_text"
+    t.string "sub_location"
+    t.integer "secondary_status"
+    t.string "serial_number"
+    t.string "last_updated_by"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["location_type_id"], name: "index_containers_on_location_type_id"
+    t.index ["product_id"], name: "index_containers_on_product_id"
+    t.index ["stock_type_id"], name: "index_containers_on_stock_type_id"
+    t.index ["storage_location_id"], name: "index_containers_on_storage_location_id"
+    t.index ["warehouse_division_id", "location_type_id", "warehouse_location_id"], name: "idx_on_warehouse_division_id_location_type_id_wareh_d68492e79d"
+    t.index ["warehouse_division_id"], name: "index_containers_on_warehouse_division_id"
+    t.index ["warehouse_location_id"], name: "index_containers_on_warehouse_location_id"
+  end
+
   create_table "countries", force: :cascade do |t|
     t.string "name"
     t.string "full_name"
@@ -55,6 +85,29 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_27_201539) do
     t.datetime "updated_at", null: false
     t.index ["country_id"], name: "index_customers_on_country_id"
     t.index ["customer"], name: "index_customers_on_customer", unique: true
+  end
+
+  create_table "location_properties", force: :cascade do |t|
+    t.string "property_group"
+    t.string "description"
+    t.integer "loc_height"
+    t.integer "loc_width"
+    t.integer "loc_depth"
+    t.integer "no_of_skus"
+    t.integer "no_of_batches"
+    t.integer "storage_location_id", null: false
+    t.integer "stock_type_id", null: false
+    t.integer "product_type_id", null: false
+    t.string "replen_zone"
+    t.string "count_zone"
+    t.boolean "exist_empty"
+    t.boolean "create_on_fly"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_type_id"], name: "index_location_properties_on_product_type_id"
+    t.index ["property_group"], name: "index_location_properties_on_property_group", unique: true
+    t.index ["stock_type_id"], name: "index_location_properties_on_stock_type_id"
+    t.index ["storage_location_id"], name: "index_location_properties_on_storage_location_id"
   end
 
   create_table "location_types", force: :cascade do |t|
@@ -160,12 +213,50 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_27_201539) do
     t.index ["division"], name: "index_warehouse_divisions_on_division", unique: true
   end
 
+  create_table "warehouse_locations", force: :cascade do |t|
+    t.integer "warehouse_division_id", null: false
+    t.integer "location_type_id", null: false
+    t.string "location"
+    t.integer "storage_location_id", null: false
+    t.integer "stock_type_id", null: false
+    t.integer "location_property_id", null: false
+    t.string "special_stock_type"
+    t.string "special_text"
+    t.string "drop_zone"
+    t.string "loc_status"
+    t.decimal "latitude", precision: 6, scale: 5
+    t.decimal "longitude", precision: 6, scale: 5
+    t.string "last_updated_by"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["location_property_id"], name: "index_warehouse_locations_on_location_property_id"
+    t.index ["location_type_id"], name: "index_warehouse_locations_on_location_type_id"
+    t.index ["stock_type_id"], name: "index_warehouse_locations_on_stock_type_id"
+    t.index ["storage_location_id"], name: "index_warehouse_locations_on_storage_location_id"
+    t.index ["warehouse_division_id", "location_type_id", "location"], name: "idx_on_warehouse_division_id_location_type_id_locat_3a6a4b7fa6", unique: true
+    t.index ["warehouse_division_id"], name: "index_warehouse_locations_on_warehouse_division_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "containers", "location_types"
+  add_foreign_key "containers", "products"
+  add_foreign_key "containers", "stock_types"
+  add_foreign_key "containers", "storage_locations"
+  add_foreign_key "containers", "warehouse_divisions"
+  add_foreign_key "containers", "warehouse_locations"
   add_foreign_key "customers", "countries"
+  add_foreign_key "location_properties", "product_types"
+  add_foreign_key "location_properties", "stock_types"
+  add_foreign_key "location_properties", "storage_locations"
   add_foreign_key "microposts", "users"
   add_foreign_key "products", "countries"
   add_foreign_key "products", "product_types"
   add_foreign_key "suppliers", "countries"
   add_foreign_key "warehouse_divisions", "countries"
+  add_foreign_key "warehouse_locations", "location_properties"
+  add_foreign_key "warehouse_locations", "location_types"
+  add_foreign_key "warehouse_locations", "stock_types"
+  add_foreign_key "warehouse_locations", "storage_locations"
+  add_foreign_key "warehouse_locations", "warehouse_divisions"
 end

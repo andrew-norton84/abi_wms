@@ -1,0 +1,38 @@
+<%= form_with(model: warehouse_location) do |f| %>
+  <h1><%= yield(:title) %></h1>
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <%= f.label :division %>
+  <%= f.collection_select :warehouse_division_id, WarehouseDivision.all, :id, :description, prompt: true, class: 'form-control' %>
+
+  <%= f.label :location_type %>
+  <%= f.collection_select :location_type_id, LocationType.all, :id, :description, prompt: true, class: 'form-control' %>
+
+  <%= f.label :location %>
+  <%= f.text_field :location, class: 'form-control' %>
+
+  <%= f.label :storage_location %>
+  <%= f.collection_select :storage_location_id, StorageLocation.all, :id, :description, prompt: true, class: 'form-control' %>
+
+  <%= f.label :stock_type %>
+  <%= f.collection_select :stock_type_id, StockType.all, :id, :description, prompt: true, class: 'form-control' %>
+
+  <%= f.label :property_group %>
+  <%= f.collection_select :location_property_id, LocationProperty.all, :id, :description, prompt: true, class: 'form-control' %>
+
+  <%= f.label :special_stock_type %>
+  <%= f.text_field :special_stock_type, class: 'form-control' %>
+  <%= f.label :special_text %>
+  <%= f.text_field :special_text, class: 'form-control' %>
+  <%= f.label :drop_zone %>
+  <%= f.text_field :drop_zone, class: 'form-control' %>
+  <%= f.label :loc_status %>
+  <%= f.text_field :loc_status, class: 'form-control' %>
+  <%= f.label :latitude %>
+  <%= f.number_field :latitude, step: :any, class: 'form-control' %>
+  <%= f.label :longitude %>
+  <%= f.number_field :longitude, step: :any, class: 'form-control' %>
+
+  <% yield(:button_text).empty? ? ep = edit_warehouse_location_path(warehouse_location) : ep = "" %>
+  <%= render 'shared/buttons', f: f, url: warehouse_locations_url, model: warehouse_location, edit_path: ep %>
+<% end %>

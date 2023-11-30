@@ -1,0 +1,10 @@
+<li>
+  <%= link_to location_property.property_group, location_property %>
+  - 
+  <%= location_property.description %>
+  <% if current_user.admin? %>
+    | <%= link_to "edit", edit_location_property_path(location_property) %>
+    | <%= link_to "delete", location_property, data: { "turbo-method": :delete,
+                                          turbo_confirm: "You sure?" } %>
+  <% end %>
+</li>

@@ -1,0 +1,45 @@
+<%= form_with(model: location_property) do |f| %>
+  <h1><%= yield(:title) %></h1>
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <%= f.label :property_group %>
+  <%= f.text_field :property_group, class: 'form-control' %>
+
+  <%= f.label :description %>
+  <%= f.text_field :description, class: 'form-control' %>
+
+  <%= f.label :storage_location %>
+  <%= f.collection_select :storage_location_id, StorageLocation.all, :id, :description, prompt: true, class: 'form-control' %>
+
+  <%= f.label :stock_type %>
+  <%= f.collection_select :stock_type_id, StockType.all, :id, :description, prompt: true, class: 'form-control' %>
+
+  <%= f.label :product_type %>
+  <%= f.collection_select :product_type_id, ProductType.all, :id, :description, prompt: true, class: 'form-control' %>
+
+  <%= f.label :replen_zone %>
+  <%= f.text_field :replen_zone, class: 'form-control' %>
+  <%= f.label :count_zone %>
+  <%= f.text_field :count_zone, class: 'form-control' %>
+
+  <%= f.label :loc_height %>
+  <%= f.number_field :loc_height, class: 'form-control' %>
+  <%= f.label :loc_width %>
+  <%= f.number_field :loc_width, class: 'form-control' %>
+  <%= f.label :loc_depth %>
+  <%= f.number_field :loc_depth, class: 'form-control' %>
+
+  <%= f.label :no_of_skus %>
+  <%= f.number_field :no_of_skus, class: 'form-control' %>
+  <%= f.label :no_of_batches %>
+  <%= f.number_field :no_of_batches, class: 'form-control' %>
+
+  <%= f.label :exist_empty %>
+  <%= f.check_box :exist_empty, class: 'form-control' %>
+  <%= f.label :create_on_fly %>
+  <%= f.check_box :create_on_fly, class: 'form-control' %>
+
+  
+  <% yield(:button_text).empty? ? ep = edit_location_property_path(location_property) : ep = "" %>
+  <%= render 'shared/buttons', f: f, url: location_properties_url, model: location_property, edit_path: ep %>
+<% end %>

@@ -1,0 +1,10 @@
+<% provide(:title, 'All Location Properties') %>
+<h1>Location Properties</h1>
+
+<%= render '/shared/page', new_path: new_location_property_path %>
+
+<ul class="location_properties">
+    <%= render @location_properties %>
+</ul>
+
+<%= render '/shared/page', new_path: new_location_property_path %>

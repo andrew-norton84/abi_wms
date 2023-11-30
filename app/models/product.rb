@@ -1,6 +1,7 @@
 class Product < ApplicationRecord
   belongs_to :country
   belongs_to :product_type
+  has_many :containers, dependent: :destroy
   before_save   :uppercase_product
   validates :product,  presence: true, length: { maximum: 15 },
       uniqueness: { case_sensitive: false }

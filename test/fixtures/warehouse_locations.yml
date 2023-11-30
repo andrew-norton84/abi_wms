@@ -1,0 +1,31 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  warehouse_division: one
+  location_type: one
+  location: MyString
+  storage_location: one
+  stock_type: one
+  location_property: one
+  special_stock_type: MyString
+  special_text: MyString
+  drop_zone: MyString
+  loc_status: MyString
+  latitude: 9.99
+  longitude: 9.99
+  last_updated_by: MyString
+
+two:
+  warehouse_division: two
+  location_type: two
+  location: MyString
+  storage_location: two
+  stock_type: two
+  location_property: two
+  special_stock_type: MyString
+  special_text: MyString
+  drop_zone: MyString
+  loc_status: MyString
+  latitude: 9.99
+  longitude: 9.99
+  last_updated_by: MyString

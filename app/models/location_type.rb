@@ -1,4 +1,6 @@
 class LocationType < ApplicationRecord
+  has_many :warehouse_locations, dependent: :destroy
+  has_many :containers, dependent: :destroy
   before_save   :uppercase_location_type
   before_save   :uppercase_short_desc
   validates :location_type,  presence: true, length: { maximum: 4 },

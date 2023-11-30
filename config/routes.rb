@@ -28,5 +28,7 @@ Rails.application.routes.draw do
   resources :products
   resources :customers
   resources :suppliers
+  resources :location_properties
+  resources :warehouse_locations
   get '/microposts', to: 'static_pages#home'
 end

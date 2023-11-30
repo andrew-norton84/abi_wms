@@ -1,4 +1,7 @@
 class StorageLocation < ApplicationRecord
+  has_many :location_properties, dependent: :destroy
+  has_many :warehouse_locations, dependent: :destroy
+  has_many :containers, dependent: :destroy
   before_save   :uppercase_short_desc
   validates :storage_location,  presence: true, length: { maximum: 4 },
       uniqueness: true

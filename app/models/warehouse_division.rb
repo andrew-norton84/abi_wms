@@ -1,5 +1,6 @@
 class WarehouseDivision < ApplicationRecord
   belongs_to :country
+  has_many :containers, dependent: :destroy
   before_save   :uppercase_division
   validates :division,  presence: true, length: { maximum: 4 },
       uniqueness: { case_sensitive: false }

@@ -1,5 +1,6 @@
 class ProductType < ApplicationRecord
   has_many :products, dependent: :destroy
+  has_many :location_properties, dependent: :destroy
   before_save   :uppercase_product_type
   before_save   :uppercase_short_desc
   validates :product_type,  presence: true, length: { maximum: 4 },
