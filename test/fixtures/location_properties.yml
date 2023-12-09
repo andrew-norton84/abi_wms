@@ -1,31 +1,16 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  property_group: MyString
-  description: MyString
+PICK:
+  property_group: PICK
+  description: Normal Pick Face
   loc_height: 1
   loc_width: 1
   loc_depth: 1
   no_of_skus: 1
   no_of_batches: 1
-  storage_location: one
-  stock_type: one
-  product_type: one
+  storage_location: 1001
+  stock_type: U
+  product_type: S
   count_zone: MyString
-  exists_empty: false
-  creat_on_fly: false
-
-two:
-  property_group: MyString
-  description: MyString
-  loc_height: 1
-  loc_width: 1
-  loc_depth: 1
-  no_of_skus: 1
-  no_of_batches: 1
-  storage_location: two
-  stock_type: two
-  product_type: two
-  count_zone: MyString
-  exists_empty: false
-  creat_on_fly: false
+  exist_empty: true
+  create_on_fly: false

@@ -1,11 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-unrestricted:
+U:
   stock_type: U
   short_desc: URES
   description: Unrestricted
 
-blocked:
+B:
   stock_type: B
   short_desc: BLCK
   description: Blocked

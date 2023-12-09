@@ -1,11 +1,21 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  location_type: MyString
-  short_desc: MyString
-  description: MyString
+S:
+  location_type: S
+  short_desc: PICK
+  description: Pick Location
 
-two:
-  location_type: MyString
-  short_desc: MyString
-  description: MyString
+P:
+  location_type: P
+  short_desc: PALL
+  description: Pallet Location
+
+L:
+  location_type: L
+  short_desc: LP
+  description: Licence Plate
+
+W:
+  location_type: W
+  short_desc: OWIP
+  description: Order WIP

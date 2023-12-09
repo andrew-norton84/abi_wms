@@ -1,13 +1,7 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  product: MyString
-  country_id: one
-  product_type_id: one
-  description: MyString
-
-two:
-  product: MyString
-  country_id: two
-  product_type_id: two
-  description: MyString
+PRODUCT:
+ product: PRODUCT
+ country: UK
+ product_type: S
+ description: Test Product
