@@ -13,5 +13,11 @@
   <%= f.label :password_confirmation %>
   <%= f.password_field :password_confirmation, class: 'form-control' %>
 
+  <%= f.label :division %>
+  <%= f.collection_select :warehouse_division_id, WarehouseDivision.all, :id, :description, prompt: true, class: 'form-control' %>
+
+  <%= f.label :location_type %>
+  <%= f.collection_select :location_type_id, LocationType.all, :id, :description, prompt: true, class: 'form-control' %>
+
   <%= f.submit yield(:button_text), class: "btn btn-primary" %>
 <% end %>

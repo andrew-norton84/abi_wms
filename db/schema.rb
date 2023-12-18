@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_28_230719) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_17_193129) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -200,7 +200,11 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_28_230719) do
     t.datetime "activated_at"
     t.string "reset_digest"
     t.datetime "reset_sent_at"
+    t.integer "warehouse_division_id"
+    t.integer "location_type_id"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["location_type_id"], name: "index_users_on_location_type_id"
+    t.index ["warehouse_division_id"], name: "index_users_on_warehouse_division_id"
   end
 
   create_table "warehouse_divisions", force: :cascade do |t|

@@ -1,11 +1,13 @@
-<li>
-  <%= warehouse_location.warehouse_division_id %>
-  <%= link_to warehouse_location.location, warehouse_location %>
-  - 
-  <%= warehouse_location.location %>
+<tr>
+  <td><%= warehouse_location.warehouse_division.division %></td>
+  <td><%= warehouse_location.location_type.short_desc %></td>
+  <td><%= link_to warehouse_location.location, warehouse_location %></td>
+  <td><%= warehouse_location.storage_location.short_desc %></td>
+  <td><%= warehouse_location.stock_type.short_desc %></td>
+  <td title="<%= warehouse_location.location_property.description %>"><%= warehouse_location.location_property.property_group %></td>
   <% if current_user.admin? %>
-    | <%= link_to "edit", edit_warehouse_location_path(warehouse_location) %>
-    | <%= link_to "delete", warehouse_location, data: { "turbo-method": :delete,
-                                          turbo_confirm: "You sure?" } %>
+    <td><%=link_to "edit", edit_warehouse_location_path(warehouse_location) %></td>
+    <td><%=link_to "delete", warehouse_location, data: { "turbo-method": :delete,
+                                          turbo_confirm: "You sure?" } %></td>
   <% end %>
-</li>
+</tr>

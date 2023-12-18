@@ -1,0 +1,51 @@
+<%= form_with(model: container) do |f| %>
+  <h1><%= yield(:title) %></h1>
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <%= f.label :division %>
+  <p><%= container.warehouse_division.description %></p>
+
+  <%= f.label :location_type %>
+  <p><%= container.location_type.description%></p>
+
+  <%= f.label :warehouse_location %>
+  <%= f.text_field :location_string, class: 'form-control' %>
+
+  <%= f.label :storage_location %>
+  <%= f.collection_select :storage_location_id, StorageLocation.all, :id, :description, prompt: true, class: 'form-control' %>
+
+  <%= f.label :stock_type %>
+  <%= f.collection_select :stock_type_id, StockType.all, :id, :description, prompt: true, class: 'form-control' %>
+
+  <%= f.label :product %>
+  <%= f.text_field :product_string, class: 'form-control' %>
+
+  <%= f.label :quantity %>
+  <%= f.number_field :quantity, step: :any, class: 'form-control' %>
+
+  <%= f.label :expiry_date %>
+  <%= f.date_field :expiry_date, step: :any, class: 'form-control' %>
+  <%= f.label :manufact_date %>
+  <%= f.date_field :manufact_date, step: :any, class: 'form-control' %>
+  <%= f.label :batch_number %>
+  <%= f.text_field :batch_number, class: 'form-control' %>
+  <%= f.label :serial_number %>
+  <%= f.text_field :serial_number, class: 'form-control' %>
+  <%= f.label :reference %>
+  <%= f.text_field :reference, class: 'form-control' %>
+  <%= f.label :notes %>
+  <%= f.text_field :notes, class: 'form-control' %>
+  <%= f.label :sub_location %>
+  <%= f.text_field :sub_location, class: 'form-control' %>
+  <%= f.label :special_stock_type %>
+  <%= f.text_field :special_stock_type, class: 'form-control' %>
+  <%= f.label :special_text %>
+  <%= f.text_field :special_text, class: 'form-control' %>
+  <%= f.label :secondary_status %>
+  <%= f.number_field :secondary_status, class: 'form-control' %>
+  <%= f.label :last_updated_by %>
+  <%= f.text_field :last_updated_by, class: 'form-control' %>
+
+  <% yield(:button_text).empty? ? ep = edit_container_path(container) : ep = "" %>
+  <%= render 'shared/buttons', f: f, url: containers_url, model: container, edit_path: ep %>
+<% end %>

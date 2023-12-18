@@ -1,0 +1,20 @@
+<tr>
+  <td><%= link_to container.warehouse_division.division, container %></td>
+  <td><%= container.location_type.short_desc %></td>
+  <td><%= container.warehouse_location.location %></td>
+  <td><%= container.storage_location.short_desc %></td>
+  <td><%= container.stock_type.short_desc %></td>
+  <td title="<%= container.product.description %>"><%= container.product.product %></td>
+  <td align="right"><%= container.quantity %></td>
+  <td><%= container.batch_number %></td>
+  <td>
+  <% if container.expiry_date != nil %>
+    <%= container.expiry_date.strftime('%d/%m/%Y') %>
+  <% end %>
+  </td>
+  <% if current_user.admin? %>
+    <td><%=link_to "edit", edit_container_path(container) %></td>
+    <td><%=link_to "delete", container, data: { "turbo-method": :delete,
+                                          turbo_confirm: "You sure?" } %></td>
+  <% end %>
+</tr>

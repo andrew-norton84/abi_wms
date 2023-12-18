@@ -3,10 +3,10 @@
   <%= render 'shared/error_messages', object: f.object %>
 
   <%= f.label :division %>
-  <%= f.collection_select :warehouse_division_id, WarehouseDivision.all, :id, :description, prompt: true, class: 'form-control' %>
+  <p><%= warehouse_location.warehouse_division.description %></p>
 
   <%= f.label :location_type %>
-  <%= f.collection_select :location_type_id, LocationType.all, :id, :description, prompt: true, class: 'form-control' %>
+  <p><%= warehouse_location.location_type.description %></p>
 
   <%= f.label :location %>
   <%= f.text_field :location, class: 'form-control' %>

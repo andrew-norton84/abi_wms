@@ -7,6 +7,8 @@ class Product < ApplicationRecord
       uniqueness: { case_sensitive: false }
   validates :description,  presence: true, length: { maximum: 40 }
 
+    
+
   private
 
   # Converts division to all uppercase.

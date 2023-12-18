@@ -1,7 +1,8 @@
-<% provide(:title, 'All Locations') %>
-<h1>Warehouse Locations</h1>
+<% provide(:title, 'Containers') %>
 
-<%= render '/shared/page', new_path: new_warehouse_location_path %>
+<h1>All Containers</h1>
+
+<%= render 'shared/page', new_path: new_container_path %>
 
 <div class="table-responsive">
   <table class="table table-striped">
@@ -12,7 +13,10 @@
         <th>Location</th>
         <th>SLOC</th>
         <th>Status</th>
-        <th>Property Group</th>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Batch</th>
+        <th>Expiry</th>
         <% if current_user.admin? %>
             <th>Edit</th>
             <th>Delete</th>
@@ -20,9 +24,9 @@
       </tr>
     </thead>
     <tbody>
-        <%= render @warehouse_locations %>
+        <%= render @containers %>
     </tbody>
   </table>
 </div>
 
-<%= render '/shared/page', new_path: new_warehouse_location_path %>
+<%= render '/shared/page', new_path: new_container_path %>

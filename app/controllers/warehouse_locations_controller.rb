@@ -2,7 +2,9 @@ class WarehouseLocationsController < ApplicationController
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
 
   def index
-    @warehouse_locations = WarehouseLocation.paginate(page: params[:page])
+    @warehouse_locations = WarehouseLocation.where("warehouse_division_id = ? AND location_type_id = ?",
+    current_user.warehouse_division_id, current_user.location_type_id)
+    .paginate(page: params[:page])
   end
 
   def show
@@ -11,10 +13,24 @@ class WarehouseLocationsController < ApplicationController
 
   def new
     @warehouse_location = WarehouseLocation.new
+
+    if (current_user.warehouse_division_id != nil)
+      @warehouse_location.warehouse_division_id = current_user.warehouse_division_id
+    end
+    if (current_user.location_type_id != nil)
+      @warehouse_location.location_type_id = current_user.location_type_id
+    end
   end
 
   def create
     @warehouse_location = WarehouseLocation.new(warehouse_location_params)
+
+    if (current_user.warehouse_division_id != nil)
+      @warehouse_location.warehouse_division_id = current_user.warehouse_division_id
+    end
+    if (current_user.location_type_id != nil)
+      @warehouse_location.location_type_id = current_user.location_type_id
+    end
 
     if @warehouse_location.save
       flash[:success] = @warehouse_location.location + " created"
