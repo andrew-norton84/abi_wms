@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+
+  namespace :api do
+    namespace :v1 do
+      resources:warehouse_locations do
+        resources :containers
+      end
+    end
+  end
+  
   get 'password_resets/new'
   get 'password_resets/edit'
   root   "static_pages#home"
